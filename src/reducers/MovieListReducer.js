@@ -5,21 +5,21 @@ const initialState = {
     items: []
 };
 
-const AnimeListReducer = (state = initialState, action) => {
+const MovieListReducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.GET_ANIMES_REQUEST:
+        case actionTypes.GET_MOVIES_REQUEST:
             return {
                 ...state,
                 isFetching: true,
                 items: [],
             };
-        case  actionTypes.GET_ANIMES_SUCCESS:
+        case  actionTypes.GET_MOVIES_SUCCESS:
             return {
                 ...state,
                 isFetching: false,
                 items: action.payload,                
             };
-        case actionTypes.GET_ANIMES_FAILURE:
+        case actionTypes.GET_MOVIES_FAILURE:
             return {
                 ...state,
                 isFetching: false,
@@ -30,4 +30,4 @@ const AnimeListReducer = (state = initialState, action) => {
     }
 };
 
-export default AnimeListReducer;
+export default MovieListReducer;

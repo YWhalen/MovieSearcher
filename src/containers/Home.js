@@ -16,8 +16,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 
-// AnimeList取得
-import AnimeList from '../containers/AnimeList';
+// MovieList取得
+import MovieList from '../containers/MovieList';
 
 const styles = theme => ({
     titleImage: { 
@@ -48,6 +48,10 @@ const styles = theme => ({
 })
 
 const current_year = (new Date()).getFullYear();
+// const current_category = { popularity:'人気順' }
+//var map = new Map([[ "popularity",'人気順'], ['vote_average','評価が高い'], ['revenue','売り上げた順']])
+var map = new Map([[ "人気順",'popularity'], ['見るべき順','vote_average'], ['みんなが知ってる順','revenue']])
+//map.set('popularity', '人気順')
 //const current_cour = Math.ceil((new Date()).getMonth() / 3);
 
 class Home extends React.Component {
@@ -55,6 +59,7 @@ class Home extends React.Component {
   // ここだけでしか使わないのでRedux未使用;    
     state = {
         year: current_year,
+        category: map.get('人気順')
         //cour: current_cour
     }
 
@@ -73,6 +78,11 @@ class Home extends React.Component {
         years.push(<MenuItem key={y} value={y}>{y}年</MenuItem>);
     }
 
+    // sort_by入力
+    const category = []
+    map.forEach(function(value, key) {
+        category.push(<MenuItem key={key} value={value}>{key}</MenuItem>);
+    });
         return(
             <div>
                 <img src="/images/MovieSeacher.png" alt="title" className={classes.titleImage}/>
@@ -90,32 +100,31 @@ class Home extends React.Component {
                     {years}
                     </Select>
                 </FormControl>
-{/* 
                 <FormControl className={classes.formControl}>
-                    <InputLabel shrink htmlFor="cour-helper">クール</InputLabel>
+                    <InputLabel shrink htmlFor="year-helper">Sort By</InputLabel>
                     <Select
-                        value={this.state.cour}
-                        onChange={this.handleChange}
+                        value= {this.state.category}
+                        onChange= {this.handleChange}
                         inputProps={{
-                            name: 'cour',
-                            id: 'cour-helper',
+                            name: 'category',
+                            id: 'year-helper',
                         }}
                     >
-                    aa
+                    {category}
                     </Select>
-                </FormControl> */}
+                </FormControl>
                 </form>
-
                 <Button
                     variant="contained"
                     color="primary"
                     className={classes.button}
-                    onClick={() => actions.getAnimes(this.state.year)}
+                    onClick={() => actions.getMovies(this.state.year, this.state.category)}
                 >
-                {this.state.year}年 <br/>のアニメを検索
+                {/* {this.state.year}年 {this.state.category}で<br/>の映画を検索 */}
+                映画を検索
                 <Search className={classes.rightIcon}/>
                 </Button>
-                <AnimeList/>
+                <MovieList/>
 
             </div>
         )
@@ -127,9 +136,6 @@ Home.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
   };
-
-//export default Home;
-//let Home_Material = withStyles(styles, { withTheme: true })(Home)
 
 // Redux関連
 const mapState = (state, ownProps) => ({
