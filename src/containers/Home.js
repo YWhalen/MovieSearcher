@@ -50,7 +50,7 @@ const styles = theme => ({
 const current_year = (new Date()).getFullYear();
 // const current_category = { popularity:'人気順' }
 //var map = new Map([[ "popularity",'人気順'], ['vote_average','評価が高い'], ['revenue','売り上げた順']])
-var map = new Map([[ "人気順",'popularity'], ['見るべき順','vote_average'], ['みんなが知ってる順','revenue']])
+var map = new Map([[ "やっぱりこれでしょ！順",'popularity'], ['見て後悔しない！順','vote_average'], ['みんなが知ってる順','revenue']])
 //map.set('popularity', '人気順')
 //const current_cour = Math.ceil((new Date()).getMonth() / 3);
 
