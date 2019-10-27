@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Movie Searcher
+
+Created with React and Node.js to search movies in english. You can go check their twitter and all the info from the each link
+
 ## Available Scripts
 
 In the project directory, you can run:
