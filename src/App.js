@@ -9,6 +9,8 @@ import Home from './containers/Home';
 
 // コンポーネント読み込み
 // import WrapMainContent from './components/WrapMainContent'
+//const API_KEY =`${process.env.REACT_APP_API_KEY}`
+//console.log("API", API_KEY)
 
 class App extends Component {
   render() {

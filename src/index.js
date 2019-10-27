@@ -32,6 +32,9 @@ const store = createStore(
 
 // Material-UIテーマカスタマイズ
 const theme = createMuiTheme({
+    typography: {
+      useNextVariants: true,
+    },
     palette: {
       type: 'light', // light or dark
       primary: red, // primaryのカラー
@@ -42,11 +45,11 @@ const theme = createMuiTheme({
 
 
 ReactDOM.render(
-<Provider store={store}>
-  <BrowserRouter>
-    <App/>
-  </BrowserRouter>
-</Provider> 
+  <Provider store={store}>
+    <BrowserRouter>
+      <App/>
+    </BrowserRouter>
+  </Provider> 
     , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
